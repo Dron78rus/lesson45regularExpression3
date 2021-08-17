@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      p {
+        font-weight: bold;
+      }
+      .topic {
+        text-decoration: underline;
+      }
+    </style>
+    <p>Задание 1</p>
+    <div class="topic">На карманы при замене</div>
+    <br />
+    <div class="task">
+      Напишите регулярку, которая найдет строки по шаблону: любое количество
+      букв и цифр, символ @, любое количество букв и цифр и поменяет местами то,
+      что стоит до @ на то, что стоит после нее. Например, aaa@bbb должно
+      превратиться в bbb@aaa.
+    </div>
+    <br /><br />
+    <div class="divT1"></div>
+
+    <br />
+    <hr />
+    <p>Задание 2</p>
+    <div class="task">
+      Напишите регулярку, которая найдет все цифры и удвоит их количество таким
+      образом: 'a11b22c33' (то есть рядом с каждой цифрой напишет такую же).
+    </div>
+    <br /><br />
+    <div class="divT2"></div>
+
+    <br />
+    <hr />
+    <p>Задание 3</p>
+    <div class="topic">Задачи на test и match</div>
+    <br />
+    <div class="task">
+      С помощью метода test определите, что переданная строка является емэйлом.
+    </div>
+    <br /><br />
+    <div class="divT3"></div>
+
+    <br />
+    <hr />
+    <p>Задание 4</p>
+    <div class="topic">Задачи на test и match</div>
+    <br />
+    <div class="task">С помощью match найдите все емэйлы в виде массива.</div>
+    <br /><br />
+    <div class="divT4"></div>
+
+    <script>
+      // http://old.code.mu/tasks/javascript/regular/rabota-s-regulyarnymi-vyrazeniyami-v-javascript-glava-3.html
+
+      // задание 1
+
+      const d = document
+      const str = 'aaa@bbb eee7@kkk'
+      const divT1 = d.querySelector('.divT1')
+
+      function outputOfResult(par, receivedValue, initialValue = 'none') {
+        if (initialValue !== 'none') {
+          const sourceString = `Исходная строка: ${initialValue}`
+          const newDiv = d.createElement('div')
+          par.appendChild(newDiv)
+          newDiv.innerHTML = sourceString
+        }
+
+        const modifiedString = `Результат: ${receivedValue}`
+        const newDiv2 = d.createElement('div')
+        par.appendChild(newDiv2)
+        newDiv2.innerHTML = modifiedString
+      }
+
+      const str2 = str.replace(/(\w+)@(\w+)/g, '$2@$1')
+
+      outputOfResult(divT1, str2, str)
+
+      // задание 2
+
+      const divT2 = d.querySelector('.divT2')
+      const str3 = 'a1b2c3'
+      const str4 = str3.replace(/(\d)/g, '$1$1')
+
+      outputOfResult(divT2, str4, str3)
+
+      // задание 3
+
+      const divT3 = d.querySelector('.divT3')
+
+      const arr = [
+        'mymail@mail.ru',
+        'my.mail@mail.ru',
+        'my-mail@mail.ru',
+        'my_mail@mail.ru',
+        'mail@mail.com',
+        '777@mail.77',
+        '888@888.com',
+        '999@999.99',
+        'mail@mail.by',
+        'mail@yandex.ru',
+      ]
+
+      divT3.innerHTML = `Проверяемый массив адресов: `
+      for (let i = 0; i < arr.length; i++) {
+        if (i < arr.length - 1) {
+          divT3.innerHTML += `${i + 1}. ${arr[i]} <br>`
+        } else divT3.innerHTML += `${i + 1}. ${arr[i]} <br><br>`
+      }
+
+      for (let elem of arr) {
+        if (/^[\w+\W?]*@[A-Za-z]+\.[a-z]{2,3}$/.test(elem)) {
+          const str5 = `Элемент массива ${elem} является адресом электронной почты`
+          outputOfResult(divT3, str5)
+        }
+      }
+
+      // задание 4
+
+      const divT4 = d.querySelector('.divT4')
+      const str6 =
+        'mymail@mail.ru, my.mail@mail.ru, my-mail@mail.ru, my_mail@mail.ru, mail@mail.com, mail@mail.by, mail@yandex.ru.'
+      let arr2 = str6.match(/([a-zA-Z]+\W?[a-z]+@[a-zA-Z]+\.[a-z]{2,3})/g)
+      console.log(arr2)
+      outputOfResult(divT4, arr2, str6)
+    </script>
+  </body>
+</html>
