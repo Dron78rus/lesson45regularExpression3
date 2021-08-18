@@ -57,6 +57,15 @@
     <br /><br />
     <div class="divT4"></div>
 
+    <br />
+    <hr />
+    <p>Задание 5</p>
+    <div class="task">
+      С помощью test определите, что переданная строка является доменом.
+    </div>
+    <br /><br />
+    <div class="divT5"></div>
+
     <script>
       // http://old.code.mu/tasks/javascript/regular/rabota-s-regulyarnymi-vyrazeniyami-v-javascript-glava-3.html
 
@@ -131,6 +140,25 @@
       let arr2 = str6.match(/([a-zA-Z]+\W?[a-z]+@[a-zA-Z]+\.[a-z]{2,3})/g)
       console.log(arr2)
       outputOfResult(divT4, arr2, str6)
+
+      // задание 5
+
+      const divT5 = d.querySelector('.divT5')
+      const arr3 = ['site.ru', 'site.com', 'my-site.com']
+
+      divT5.innerHTML = `Проверяемый массив доменов: `
+      for (let i = 0; i < arr3.length; i++) {
+        if (i < arr3.length - 1) {
+          divT5.innerHTML += `${i + 1}. ${arr3[i]} <br>`
+        } else divT5.innerHTML += `${i + 1}. ${arr3[i]} <br><br>`
+      }
+
+      for (let elem of arr3) {
+        if (/^[\w+._-]*\.[a-z]{2,3}$/.test(elem)) {
+          const str = `Элемент массива ${elem} является доменом`
+          outputOfResult(divT5, str)
+        }
+      }
     </script>
   </body>
 </html>
