@@ -168,6 +168,25 @@
           outputOfResult(divT5, str)
         }
       }
+
+      // задание 6
+
+      const divT6 = d.querySelector('.divT6')
+      const arr4 = ['http://site.ru', 'http://site.com']
+
+      divT6.innerHTML = `Проверяемый массив доменов: `
+      for (let i = 0; i < arr4.length; i++) {
+        if (i < arr4.length - 1) {
+          divT6.innerHTML += `${i + 1}. ${arr4[i]} <br>`
+        } else divT6.innerHTML += `${i + 1}. ${arr4[i]} <br><br>`
+      }
+
+      for (let elem of arr4) {
+        if (/^http:\/\/[\w+._-]*\.[a-z]{2,3}$/.test(elem)) {
+          const str = `Элемент массива ${elem} является доменом`
+          outputOfResult(divT6, str)
+        }
+      }
     </script>
   </body>
 </html>
