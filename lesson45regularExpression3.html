@@ -75,6 +75,16 @@
     <br /><br />
     <div class="divT6"></div>
 
+    <br />
+    <hr />
+    <p>Задание 7</p>
+    <div class="task">
+      С помощью test определите, что переданная строка является доменом вида
+      http://site.ru. Протокол может быть как http, так и https.
+    </div>
+    <br /><br />
+    <div class="divT7"></div>
+
     <script>
       // http://old.code.mu/tasks/javascript/regular/rabota-s-regulyarnymi-vyrazeniyami-v-javascript-glava-3.html
 
@@ -185,6 +195,25 @@
         if (/^http:\/\/[\w+._-]*\.[a-z]{2,3}$/.test(elem)) {
           const str = `Элемент массива ${elem} является доменом`
           outputOfResult(divT6, str)
+        }
+      }
+
+      // задание 7
+
+      const divT7 = d.querySelector('.divT7')
+      const arr5 = ['http://site.ru', 'http://site.com']
+
+      divT7.innerHTML = `Проверяемый массив доменов: `
+      for (let i = 0; i < arr5.length; i++) {
+        if (i < arr5.length - 1) {
+          divT7.innerHTML += `${i + 1}. ${arr5[i]} <br>`
+        } else divT7.innerHTML += `${i + 1}. ${arr5[i]} <br><br>`
+      }
+
+      for (let elem of arr5) {
+        if (/^https?:\/\/[\w+._-]*\.ru$/.test(elem)) {
+          const str = `Элемент массива ${elem} является доменом`
+          outputOfResult(divT7, str)
         }
       }
     </script>
