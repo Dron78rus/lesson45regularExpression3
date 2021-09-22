@@ -85,6 +85,90 @@
     <br /><br />
     <div class="divT7"></div>
 
+    <br />
+    <hr />
+    <p>Задание 8</p>
+    <div class="task">
+      С помощью test определите, что переданная строка начинается с http или с
+      https.
+    </div>
+    <br /><br />
+    <div class="divT8"></div>
+
+    <br />
+    <hr />
+    <p>Задание 9</p>
+    <div class="task">
+      С помощью test определите, что переданная строка заканчивается расширением
+      txt, html или php.
+    </div>
+    <br /><br />
+    <div class="divT9"></div>
+
+    <br />
+    <hr />
+    <p>Задание 10</p>
+    <div class="task">
+      С помощью test определите, что переданная строка заканчивается расширением
+      jpg или jpeg.
+    </div>
+    <br /><br />
+    <div class="divT10"></div>
+
+    <br />
+    <hr />
+    <p>Задание 11</p>
+    <div class="task">
+      С помощью test определите, что переданная строка заканчивается расширением
+      jpg или jpeg.
+    </div>
+    <br /><br />
+    <div class="divT11"></div>
+
+    <br />
+    <hr />
+    <p>Задание 12</p>
+    <div class="task">
+      Дана строка с буквами, пробелами и цифрами. Найдите сумму всех чисел из
+      данной строки.
+    </div>
+    <br /><br />
+    <div class="divT12"></div>
+
+    <br />
+    <hr />
+    <p>Задание 13</p>
+    <div class="task">
+      С помощью replace замените в строке домены вида http://site.ru,
+      http://site.com на
+      <code>&lt;a href="http://site.ru"&gt;site.ru&lt;/a&gt;</code>
+    </div>
+    <br /><br />
+    <div class="divT13"></div>
+
+    <br />
+    <hr />
+    <p>Задание 14</p>
+    <div class="task">
+      С помощью replace замените все повторяющиеся пробелы на один
+    </div>
+    <br /><br />
+    <div class="divT14"></div>
+
+    <br />
+    <hr />
+    <p>Задание 15</p>
+    <div class="task">Найдите и удалите все комментарии CSS</div>
+    <br /><br />
+    <div class="divT15"></div>
+
+    <br />
+    <hr />
+    <p>Задание 16</p>
+    <div class="task">Найдите и удалите все комментарии HTML</div>
+    <br /><br />
+    <div class="divT16"></div>
+
     <script>
       // http://old.code.mu/tasks/javascript/regular/rabota-s-regulyarnymi-vyrazeniyami-v-javascript-glava-3.html
 
@@ -216,6 +300,110 @@
           outputOfResult(divT7, str)
         }
       }
+
+      // задание 8
+
+      const divT8 = d.querySelector('.divT8')
+      const arr6 = [
+        'http://site.ru',
+        'http://site.com',
+        'https://site.com',
+        'www.site.com',
+      ]
+
+      divT8.innerHTML = `Проверяемый массив доменов: `
+      for (let i = 0; i < arr6.length; i++) {
+        if (i < arr6.length - 1) {
+          divT8.innerHTML += `${i + 1}. ${arr6[i]} <br>`
+        } else divT8.innerHTML += `${i + 1}. ${arr6[i]} <br><br>`
+      }
+
+      for (let elem of arr6) {
+        if (/^https?/.test(elem)) {
+          const str = `Элемент массива ${elem} начинается с http или с
+      https`
+          outputOfResult(divT8, str)
+        }
+      }
+
+      // задание 9
+
+      const divT9 = d.querySelector('.divT9')
+      const str7 = 'index.php'
+      const str8 = /\.(txt|html|php)$/g.test(str7)
+
+      outputOfResult(divT9, str8, str7)
+
+      // задание 10
+
+      const divT10 = d.querySelector('.divT10')
+      const str9 = 'index.php'
+      const str10 = /\.(jpe?g)$/g.test(str9)
+
+      outputOfResult(divT10, str10, str9)
+
+      // задание 11
+
+      const divT11 = d.querySelector('.divT11')
+      const str11 = '1234567891312312323'
+      let str12
+      if (/^\d{12}$/.test(str11)) {
+        str12 = 'строка является числом, длиной до 12 цифр'
+      } else str12 = 'строка не является числом, длиной до 12 цифр'
+
+      outputOfResult(divT11, str12, str11)
+
+      // задание 12
+
+      const divT12 = d.querySelector('.divT12')
+      const str13 = '46 vf 45 ty'
+      let str14
+      let count = 0
+      let arr7 = []
+      arr7 = str13.match(/\d/g)
+      for (let i = 0; i < arr7.length; i++) {
+        count += Number(arr7[i])
+      }
+
+      str14 = `сумма цифр строки '${str13}' = ${count}`
+
+      outputOfResult(divT12, str14, str13)
+
+      // задание 13
+
+      const divT13 = d.querySelector('.divT13')
+      const str15 = 'http://site.ru aa aaa https://site.com'
+      const str16 = str15.replace(
+        /https?:\/\/(.+?\.[a-z]{2,3})/g,
+        `<a href = $& > $1 </a>`
+      )
+
+      outputOfResult(divT13, str16, str15)
+
+      // задание 14
+
+      const divT14 = d.querySelector('.divT14')
+      const str17 =
+        '12&nbsp;aa&nbsp;&nbsp;&nbsp;&nbsp;aaa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;56'
+      const str18 = str17.replace(/(?:&nbsp;)+/g, `&nbsp;`)
+
+      outputOfResult(divT14, str18, str17)
+
+      // задание 15
+
+      const divT15 = d.querySelector('.divT15')
+      const str19 = '/*dfdf*/ sadsad jkhkgkl /*12*/ kjfjkfv /*0oio*/'
+      const str20 = str19.replace(/\/\*.*?\*\//g, '')
+
+      outputOfResult(divT15, str20, str19)
+
+      // задание 16
+
+      const divT16 = d.querySelector('.divT16')
+      const str21 = `<pre><!--dfdf--> sadsad <!--ghgh--></pre>`
+      const str22 = str21.replace(/<!--.*?-->/g, '')
+
+      outputOfResult(divT16, str22, str21)
     </script>
   </body>
 </html>
